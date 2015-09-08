@@ -7,6 +7,8 @@
 var app = require('../app');
 var debug = require('debug')('helloExpress:server');
 var http = require('http');
+    // module.exports vs. exports
+    // commonJS
 
 /**
  * Get port from environment and store in Express.
@@ -20,6 +22,13 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+    // http.createServer([requestListener])
+    // - Returns a new instance of http.Server
+    //      - https://nodejs.org/api/http.html#http_class_http_server
+    //      - Event: request, connection, close, checkContinue, connect, upgrade, clientError
+    //          - https://nodejs.org/api/events.html#events_events
+    //      - Method: listen(), close(), maxHeadersCount, setTimeout(), timeout
+    // - https://nodejs.org/api/http.html#http_http_createserver_requestlistener
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -27,6 +36,9 @@ var server = http.createServer(app);
 
 server.listen(port);
 server.on('error', onError);
+    // When an EventEmitter instance experiences an error, the typical action is to emit an 'error' event.
+    // If there is no listener for it, then the default action is to print stack trace and exit the program.
+    // - https://nodejs.org/api/events.html#events_class_events_eventemitter
 server.on('listening', onListening);
 
 /**
@@ -48,6 +60,7 @@ function normalizePort(val) {
 
   return false;
 }
+    // named pipe
 
 /**
  * Event listener for HTTP server "error" event.
@@ -57,6 +70,9 @@ function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
   }
+      // If you got a system error, include the syscall property to say which syscall failed,
+      // and the errno property to say which system errno you got back.
+      // - https://www.joyent.com/developers/node/design/errors
 
   var bind = typeof port === 'string'
     ? 'Pipe ' + port
@@ -64,9 +80,11 @@ function onError(error) {
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
-    case 'EACCES':
+      case 'EACCES':
       console.error(bind + ' requires elevated privileges');
       process.exit(1);
+          // https://nodejs.org/api/process.html#process_process_exit_code
+          // - 0 : success, 1 : failure
       break;
     case 'EADDRINUSE':
       console.error(bind + ' is already in use');
@@ -74,8 +92,13 @@ function onError(error) {
       break;
     default:
       throw error;
+          // When an EventEmitter instance experiences an error, the typical action is to emit an 'error' event.
+          // If there is no listener for it, then the default action is to print stack trace and exit the program.
+          // - https://nodejs.org/api/events.html#events_class_events_eventemitter
   }
 }
+    // error.syscall
+    // error.code
 
 /**
  * Event listener for HTTP server "listening" event.
@@ -88,3 +111,4 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+    // named pipe
