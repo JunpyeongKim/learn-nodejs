@@ -6,6 +6,10 @@
  * $ npm install socket.io
  * Go to http://localhost:52273
  *
+ * 웹브라우저 3개 실행 테스트
+ * - 2개는 같은 방
+ * - 1개는 다른 방
+ *
  */
 
 var http = require('http');
