@@ -3,12 +3,12 @@
  *
  * 이벤트를 연결할 수 있는 모든 객체는 EventEmitter 객체의 상속을 받는다.
  *
- * EventEmitter
- * - addEVentListener(eventName, eventHandler)
+ * events.EventEmitter
+ * - addListener(eventName, eventHandler)
  * - on(eventName, eventHandler)
  * - setMaxListeners(limit)
  * - removeListener(eventName, eventHandler)
- * - removeAllListener([eventName])
+ * - removeAllListeners([eventName])
  * - once(eventName, eventHandler)
  *
  * events.EventEmitter & process.EventEmitter
