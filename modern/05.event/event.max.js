@@ -2,14 +2,15 @@
  * 5.2 이벤트 연결 개수 제한
  *
  * setMaxListeners(limit)
+ * - default: 10
  *
  */
 
-// turn on/off
+// try turnning on/off
 //process.setMaxListeners(15);
 //process.setMaxListeners(0);   // infinite
 
-// Default Max: 10 event listeners / 1 event
+// Default: 10 event listeners / 1 event
 process.on('exit', function () {});
 process.on('exit', function () {});
 process.on('exit', function () {});
