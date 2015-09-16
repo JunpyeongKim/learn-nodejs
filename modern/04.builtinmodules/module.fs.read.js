@@ -12,8 +12,8 @@
 
 var fs = require('fs');
 
-//var filename = 'textfile.txt';
-var filename = 'textfile2.txt'; // exception
+var filename = 'textfile.txt';
+//var filename = 'non-textfile.txt'; // exception
 
 // Synchronous
 // - try~catch
@@ -21,14 +21,14 @@ try {
     var text = fs.readFileSync(filename, 'utf8');
     console.log('readFileSync():', text);
 } catch (e) {
-    console.log('readFileSync(), exception:', e);
+    console.log('Exception, readFileSync():\n', e);
 }
 
 // Asynchronous
 // - the first parameter, i.e. error of a callback function
 fs.readFile(filename, 'utf8', function (error, data) {
     if (error) {
-        console.log('readFile(), error:', error);
+        console.log('Error, readFile():\n', error);
     } else {
         console.log('readFile():', data);
     }

@@ -23,18 +23,18 @@ var filenamesync = 'TextFileOtherWriteSync.txt';
 // Synchronous
 // - try~catch
 try {
-    fs.writeFileSync(filenamesync, data, 'utf8');
+    fs.writeFileSync(filenamesync, 'Synchronous: ' + data, 'utf8');
     //fs.writeFileSync('', data, 'utf8'); // exception
     console.log('writeFileSync(): Complete');
 } catch (e) {
-    console.log('writeFileSync(), exception:', e);
+    console.log('Exception, writeFileSync():\n', e);
 }
 
 // Asynchronous
 // - the first parameter, i.e. error of a callback function
-fs.writeFile(filename, data, 'utf8', function (error) {
+fs.writeFile(filename, 'Asynchronous: ' + data, 'utf8', function (error) {
     if (error) {
-        console.log('writeFile(), error:', error);
+        console.log('Error, writeFile():\n', error);
     } else {
         console.log('writeFile(): Complete');
     }
