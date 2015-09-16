@@ -3,12 +3,13 @@
  *
  * log()
  *  - %d, %s, %j
+ *
  * time(label)
  * timeEnd(label)
  *
  */
 
-console.log('output: %d', 273);
+console.log('output: %d', 273, '\n');
 console.log();
 
 console.log('%d + %d = %d', 273, 52, 273 + 52, 52273);
@@ -21,7 +22,7 @@ console.log('JSON: %j', { name: 'RintIanTta'});
 console.log();
 
 /*
-    문자열 '\u001b[숫자m' 이후 위치하는 모든 출력에 ANSI Code 가 적용된다.
+    '\u001b[숫자m' 이후 위치하는 모든 출력에 ANSI Code 가 적용된다.
     - 0 : 초기화
     - 1 : 색을 밝게
     - 30~37 : 글자 색 지정
@@ -35,12 +36,12 @@ console.log('\u001b[34m', 'Hello World...!');
 console.log('\u001b[35m', 'Hello World...!');
 console.log('\u001b[36m', 'Hello World...!');
 console.log('\u001b[1m');
-console.log('\u001b[31m', 'Hello World...!');
-console.log('\u001b[32m', 'Hello World...!');
-console.log('\u001b[33m', 'Hello World...!');
-console.log('\u001b[34m', 'Hello World...!');
-console.log('\u001b[35m', 'Hello World...!');
-console.log('\u001b[36m', 'Hello World...!');
+console.log('\u001b[41m', 'Hello World...!');
+console.log('\u001b[42m', 'Hello World...!');
+console.log('\u001b[43m', 'Hello World...!');
+console.log('\u001b[44m', 'Hello World...!');
+console.log('\u001b[45m', 'Hello World...!');
+console.log('\u001b[46m', 'Hello World...!');
 
 // turn on/off
 console.log('\u001b[0m');   // initialize
