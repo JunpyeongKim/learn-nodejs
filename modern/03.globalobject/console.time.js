@@ -3,6 +3,7 @@
  *
  * log()
  *  - %d, %s, %j
+ *
  * time(label)
  * timeEnd(label)
  *
