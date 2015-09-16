@@ -1,15 +1,19 @@
 /**
  * 5.1 이벤트 연결
  *
- * addEventListener(eventName, eventHandler)
+ * addListener(eventName, eventHandler)
  * on(eventName, eventHandler)
  * - Event Name / Event Type
  *
  */
 
-//process.addEventListener('exit', function () {
+
+process.addListener('exit', function () {
+    console.log('addListener(exit): Good bye...');
+});
+
 process.on('exit', function () {
-    console.log('exit: Good bye...');
+    console.log('on(exit): Good bye...');
 });
 
 process.on('uncaughtException', function (error) {
