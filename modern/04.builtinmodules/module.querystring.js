@@ -12,10 +12,10 @@ var url = require('url');
 var querystring = require('querystring');
 
 var parsedObject = url.parse('http://hanb.co.kr/book/look.html?isbn=978-89-7914-874-9');
+console.log('url.parse(urlStr):\n', parsedObject, '\n');
 
-console.log('parsedObject:', parsedObject);
+//console.log('url.parse(urlStr).query:\n', parsedObject.query);
+console.log('querystring.parse(url.parse(urlStr).query):\n', querystring.parse(parsedObject.query), '\n');
 
 // query string --> object
-console.log('parsedObject, true:', url.parse('http://hanb.co.kr/book/look.html?isbn=978-89-7914-874-9', true));
-
-console.log('parsedObject.query: ', querystring.parse(parsedObject.query));
+console.log('url.parse(urlStr, true):\n', url.parse('http://hanb.co.kr/book/look.html?isbn=978-89-7914-874-9', true));
