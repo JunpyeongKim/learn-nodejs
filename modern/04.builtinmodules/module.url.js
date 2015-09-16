@@ -3,8 +3,10 @@
  *
  * parse(urlStr [, parseQueryString=false, slashesDenoteHost=false])
  * - String --> Object
+ *
  * format(urlObj)
  * - Object --> String
+ *
  * resolve(from, to)
  * - 완전한 URL 문자열을 생성
  *
