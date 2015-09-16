@@ -6,16 +6,16 @@
  */
 
 process.on('exit', function () {
-    console.log('exit...');
+    console.log('Event: "exit" ...');
 });
 
-// turn on/off
+// try turnning on/off
 //process.exit();  // force the program to stop.
     // the following code after calling process.exit() would not be executed.
 
-process.emit('exit');  // Only eventHandler would be executed.
+process.emit('exit');  // Only eventHandlers would be executed.
 process.emit('exit');
 process.emit('exit');
 process.emit('exit');
 
-console.log('running...');
+console.log('Running...');
