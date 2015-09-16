@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('helloExpress:server');
+var debug = require('debug')('expressjs:server');
 var http = require('http');
     // module.exports vs. exports
     // commonJS
