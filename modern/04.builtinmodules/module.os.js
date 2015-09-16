@@ -29,4 +29,3 @@ console.log('totalmem():', os.totalmem());
 console.log('freemem():', os.freemem());
 console.log('cpus():', os.cpus());
 console.log('networkInterfaces():', os.networkInterfaces());
-
