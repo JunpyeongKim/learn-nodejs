@@ -2,23 +2,27 @@
  * 3.3. process 객체
  *
  * 프로그램과 관련된 정보를 나타내는 객체
+ *
+ * attributes
  * - argv, env, version, versions, arch, platform
+ *
+ * methods
  * - exit([exitCode=0]), memoryUsage(), uptime()
  *
- * $ node process.argv.js --exit 10000
+ * $ node process.js --exit 10000
  *
  */
 
 // attributes
-console.log('- process.env: ', process.env);
-console.log('- process.version: ', process.version);
-console.log('- process.versions: ', process.versions);
-console.log('- process.arch: ', process.arch);
-console.log('- process.platform: ', process.platform);
+console.log('- process.env:\n', process.env);
+console.log('- process.version:\n', process.version);
+console.log('- process.versions:\n', process.versions);
+console.log('- process.arch:\n', process.arch);
+console.log('- process.platform:\n', process.platform);
 
 // methods
-console.log('- process.memoryUsage(): ', process.memoryUsage());
-console.log('- process.uptime(): ', process.uptime());
+console.log('- process.memoryUsage():\n', process.memoryUsage());
+console.log('- process.uptime():\n', process.uptime());
 
 // argv & exit()
 process.argv.forEach(function (item, index) {
