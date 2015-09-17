@@ -28,7 +28,6 @@ var server = http.createServer(function (request, response) {
 // WebSocket Server
 // - port: 일반적으로 웹서버와 함께 사용하므로 server 객체를 매개 변수로 입력한다.
 var io = socketio.listen(server);
-var room = '';
 //io.set('log level', 2);
 io.sockets.on('connection', function (socket) {
     console.log('Socket Event: connection...', socket.id);
