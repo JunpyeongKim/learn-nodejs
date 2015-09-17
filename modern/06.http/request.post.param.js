@@ -21,15 +21,17 @@ var fs = require('fs');
 http.createServer(function (request, response) {
 
     if (request.method === 'GET') {
-        console.log('GET');
-        fs.readFile('HTMLPage.html', function (error, data) {
+        console.log('HTTP Request GET...');
+
+        fs.readFile('HTMLPagePOST.html', function (error, data) {
             response.writeHead(200, {'Content-Type': 'text/html'});
             response.end(data);
         });
     } else if (request.method === 'POST') {
-        console.log('POST');
+        console.log('HTTP Request POST...');
+
         request.on('data', function (data) {
-            console.log('data');
+            console.log('POST data:', data);    // <Buffer 64 61 74 61 5f 61 3d 61 61 61 61 61 26 64 61 74 61 5f 62 3d 62 62 62 62>
             response.writeHead(200, {'Content-Type': 'text/html'});
             response.end('<h1>' + data + '</h1>');
         });
