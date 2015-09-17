@@ -9,10 +9,10 @@ var http = require('http');
 
 http.createServer(function (request, response) {
 
-    // HTML
-    fs.readFile('HTMLPageRes.html', 'utf8', function (error ,data) {
+    // HTML file
+    fs.readFile('HTMLPageFS.html', 'utf8', function (error ,data) {
         if (error) {
-            //
+            console.log('Error: readFile(),\n', error);
         } else {
             response.writeHead(200, {'Content-Type': 'text/html'});
             response.end(data);
