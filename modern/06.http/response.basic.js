@@ -1,6 +1,8 @@
 /**
  * 6.3 response 객체
  *
+ * http.ServerResponse
+ *
  */
 
 require('http').createServer(function (request, response) {
