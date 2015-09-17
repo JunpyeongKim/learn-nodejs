@@ -10,6 +10,7 @@
             // 변수를 선언합니다.
 //            var socket = io.connect('http://127.0.0.1:52273');
             var socket = io.connect();
+
             // 이벤트를 연결합니다.
             socket.on('message', function (data) {
                 // 추가할 문자열을 만듭니다.
@@ -23,6 +24,7 @@
                 $(output).prependTo('#content');
 //                $('#content').listview('refresh');
             });
+
             // 버튼을 클릭할 때
             $('button').click(function () {
                 socket.emit('message', {
