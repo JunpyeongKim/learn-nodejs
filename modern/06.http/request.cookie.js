@@ -19,6 +19,7 @@ var http = require('http');
 
 http.createServer(function (request, response) {
     var cookie = request.headers.cookie;
+
     cookie = !cookie ? cookie : cookie.split(';').map(function (element) {
         var element = element.split('=');
         return {
