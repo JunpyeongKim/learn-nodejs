@@ -15,6 +15,7 @@
 
 var http = require('http');
 
+// Redirection Server
 http.createServer(function (request, response) {
 
     response.writeHead(302, {'Location': 'http://hanb.co.kr'});
@@ -25,6 +26,7 @@ http.createServer(function (request, response) {
 });
 
 
+// Unknown Server
 http.createServer(function (request, response) {
 
     response.writeHead(400);
