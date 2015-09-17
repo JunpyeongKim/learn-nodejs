@@ -2,7 +2,7 @@
  * 6.3 response 객체
  * - 6.3.2 이미지와 음악 파일 제공
  *
- * Content Type
+ * MIME Type ('Content-Type')
  * - text/plain, text/html, text/css, text/xml
  * - image/jpeg, image/png, video/mpeg, audio/mp3
  *
@@ -11,13 +11,13 @@
 var fs = require('fs');
 var http = require('http');
 
-//
+// Image Server
 http.createServer(function (request, response) {
 
-    // Image
+    // Image file
     fs.readFile('Chrysanthemum.jpg', function (error ,data) {
         if (error) {
-            //
+            console.log('Error: readFile(),\n', error);
         } else {
             response.writeHead(200, {'Content-Type': 'image/jpeg'});
             response.end(data);
@@ -29,13 +29,13 @@ http.createServer(function (request, response) {
 });
 
 
-//
+// Sound Server
 http.createServer(function (request, response) {
 
-    // Sound
+    // Sound file
     fs.readFile('Kalimba.mp3', function (error ,data) {
         if (error) {
-            //
+            console.log('Error: readFile(),\n', error);
         } else {
             response.writeHead(200, {'Content-Type': 'audio/mp3'});
             response.end(data);
