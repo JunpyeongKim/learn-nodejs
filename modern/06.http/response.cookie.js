@@ -4,8 +4,9 @@
  *
  * Cookie
  * - Key-Value pair
- * - in Client & Server
- * - response['Set-Cookie'] = ['Name=Value; Expires=날짜; Domain=도메인; Path=경로, Secure']
+ * - could be stored in both Client and Server
+ * - http.ServerResponse's Header
+ *  - 'Set-Cookie' = ['Name=Value; Expires=날짜; Domain=도메인; Path=경로, Secure']
  *
  */
 
@@ -23,6 +24,7 @@ http.createServer(function (request, response) {
         ]
     });
 
+    // request.headers.cookie: 'breakfast=toast; dinner=chicken'
     response.end('<h1>' + request.headers.cookie + '</h1>');
 }).listen(52273, function () {
     console.log('Server Running at http://127.0.0.1:52273');
