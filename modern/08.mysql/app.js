@@ -2,6 +2,7 @@
  * 8.4 MySQL 모듈을 이용한 CRUD 구현
  * - 8.4.1 데이터 표시
  * - 8.4.2 데이터 삭제
+ * - 8.4.3 데이터 추가
  *
  * $ npm install connect@1.8.5 ejs mysql
  *
@@ -74,11 +75,30 @@ connect.createServer(connect.bodyParser(), connect.router(function (app) {
         response.end();
     });
 
+    // 8.4.3 데이터 추가
     // GET - /INSERT
-    app.get('/Insert', function (request, response) {});
+    //  My Guitar, 0104804, RintSeries
+    app.get('/Insert', function (request, response) {
+        fs.readFile('Insert.html', 'utf8', function (error, data) {
+            if (error) {
+                console.log('Error:');
+            } else {
+                response.writeHead(200, {'Content-Type': 'text/html'});
+                response.end(data);
+            }
+        });
+    });
 
     // PORT - /INSERT
-    app.post('/Insert', function (request, response) {});
+    app.post('/Insert', function (request, response) {
+        var body = request.body;
+
+        client.query('INSERT INTO products (name, modelnumber, series) VALUES (?, ?, ?)',
+            [body.name, body.modelnumber, body.series]);
+
+        response.writeHead(302, {'Location': '/'});
+        response.end();
+    });
 
     // GET - /EDIT/:id
     app.get('/Edit/:id', function (request, response) {});
