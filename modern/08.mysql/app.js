@@ -1,6 +1,7 @@
 /**
  * 8.4 MySQL 모듈을 이용한 CRUD 구현
- * - 8.4.1 데이터 표시 구현
+ * - 8.4.1 데이터 표시
+ * - 8.4.2 데이터 삭제
  *
  * $ npm install connect@1.8.5 ejs mysql
  *
@@ -44,8 +45,8 @@ var client = mysql.createConnection({
     database: 'Company'
 });
 
-// 8.4.1 데이터 표시
 connect.createServer(connect.bodyParser(), connect.router(function (app) {
+    // 8.4.1 데이터 표시
     // GET - /List
     app.get('/', function (request, response) {
         fs.readFile('List.html', 'utf8', function (error, data) {
@@ -64,20 +65,26 @@ connect.createServer(connect.bodyParser(), connect.router(function (app) {
         });
     });
 
+    // 8.4.2 데이터 삭제
     // GET - /DELETE/:id
-    app.get('/Delete/:id', function (request, resonse) {});
+    app.get('/Delete/:id', function (request, response) {
+        client.query('DELETE FROM products WHERE id = ?', [request.params.id]);
+
+        response.writeHead(302, {'Location': '/'});
+        response.end();
+    });
 
     // GET - /INSERT
-    app.get('/Insert', function (request, resonse) {});
+    app.get('/Insert', function (request, response) {});
 
     // PORT - /INSERT
-    app.post('/Insert', function (request, resonse) {});
+    app.post('/Insert', function (request, response) {});
 
     // GET - /EDIT/:id
-    app.get('/Edit/:id', function (request, resonse) {});
+    app.get('/Edit/:id', function (request, response) {});
 
     // POST - /EDIT
-    app.post('/Edit', function (request, resonse) {});
+    app.post('/Edit', function (request, response) {});
 })).listen(52273, function () {
     console.log('Server Running at http://127.0.0.1:52273');
 });
