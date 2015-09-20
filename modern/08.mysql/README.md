@@ -4,15 +4,18 @@
 2. Session
 3. Database
 
-- Install MySQL
-1. Windows
-1.1. Install --> MySQL Command Line Client
-2. Ubuntu
-2.1. $ sudo apt-get install mysql-server mysql-client
-2.2. $ mysql -u root -p
-3. Mac OS X
-3.1. Install MySQL Community Server --> System Preferences --> Start MySQL Server
-3.2. $ mysql
+## 8.1 MySQL 설치
+- Windows
+Install --> MySQL Command Line Client
+
+- Ubuntu
+$ sudo apt-get install mysql-server mysql-client
+$ mysql -u root -p  # MySQL Monitor
+
+- Mac OS X
+Install MySQL Community Server --> System Preferences --> Start MySQL Server
+$ mysql
+$ sudo mysql -u root
 
 ## 8.2 MySQL 기본
 CREATE DATABASE db_name;
