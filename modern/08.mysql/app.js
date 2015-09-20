@@ -3,6 +3,7 @@
  * - 8.4.1 데이터 표시
  * - 8.4.2 데이터 삭제
  * - 8.4.3 데이터 추가
+ * - 8.4.4 데이터 수정
  *
  * $ npm install connect@1.8.5 ejs mysql
  *
@@ -100,11 +101,43 @@ connect.createServer(connect.bodyParser(), connect.router(function (app) {
         response.end();
     });
 
+    // 8.4.4 데이터 수정
     // GET - /EDIT/:id
-    app.get('/Edit/:id', function (request, response) {});
+    app.get('/Edit/:id', function (request, response) {
+        fs.readFile('Edit.html', 'utf8', function (error, data) {
+            if (error) {
+                console.log('Error:');
+            } else {
+                client.query('SELECT * FROM products WHERE id = ?', [request.params.id],
+                    function (error, results) {
+                        if (error) {
+                            console.log('Error:');
+                        } else {
+                            response.writeHead(200, {'Content-Type': 'text/html'});
+                            response.end(ejs.render(data, {
+                                data: results[0]
+                            }));
+                        }
+                    });
+            }
+        });
+    });
 
     // POST - /EDIT
-    app.post('/Edit', function (request, response) {});
+    app.post('/Edit/:id', function (request, response) {
+        var body = request.body;
+
+        client.query('UPDATE products SET name = ?, modelnumber = ?, series = ? WHERE id = ?',
+            [body.name, body.modelnumber, body.series, request.params.id],
+            function (error) {
+                if (error) {
+                    console.log('Error:');
+                } else {
+                    response.writeHead(302, {'Location': '/'});
+                    response.end();
+                }
+            });
+    });
 })).listen(52273, function () {
     console.log('Server Running at http://127.0.0.1:52273');
 });
