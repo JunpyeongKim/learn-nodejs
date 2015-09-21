@@ -7,32 +7,9 @@
  *
  * $ npm install connect@1.8.5 ejs mysql
  *
- * CREATE DATABASE Company;
- *
- * USE Company;
- *
- * CREATE TABLE products (
- *      id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
- *      name VARCHAR(50) NOT NULL,
- *      modelnumber VARCHAR(15) NOT NULL,
- *      series VARCHAR(30) NOT NULL
- * );
+ * CREATE TABLE tbl_name (attribute type, ...)
  *  - VARCHAR, INT, DOUBLE
  *  - NOT NULL, AUTO_INCREMENT, PRIMARY KEY
- *
- * DESCRIBE products;
- *
- * INSERT INTO products (name, modelnumber, series) VALUES
- *      ('Eric Clapton Stratocaster', '0117602860', 'Artist'),
- *      ('Jeff Beck Stratocaster', '0119600805', 'Artist'),
- *      ('American Deluxe Stratocaster', '011900', 'American Deluxe'),
- *      ('American Deluxe Tele', '011950', 'American Deluxe'),
- *      ('Jim Adkins JA-90 Telecaster Thinline', '0262350538', 'Artist'),
- *      ('Vintage Hot Rod 57 Strat', '0100132809', 'Vintage Hot Rod'),
- *      ('American Vintage 57 Stratocaster Reissue', '0100102806', 'American Vintage'),
- *      ('American Standard Stratocaster', '0110400700', 'American Standard'),
- *      ('Road Worn Player Stratocaster HSS', '0131610309', 'Road Worn'),
- *      ('Road Worn Player Telecaster', '0131082306', 'Road Worn');
  *
  */
 
@@ -47,17 +24,18 @@ var client = mysql.createConnection({
     database: 'Company'
 });
 
+// Connect's Middleware: Body Parser & Router
 connect.createServer(connect.bodyParser(), connect.router(function (app) {
     // 8.4.1 데이터 표시
     // GET - /List
     app.get('/', function (request, response) {
         fs.readFile('List.html', 'utf8', function (error, data) {
             if (error) {
-                console.log('Error:');
+                console.log('Error: readFile(List.html)', error);
             } else {
                 client.query('SELECT * FROM products', function (error, result) {
                     if (error) {
-
+                        console.log('Error: SELECT,', error);
                     } else {
                         response.writeHead(200, {'Content-Type': 'text/html'});
                         response.end(ejs.render(data, {data: result}));
@@ -70,10 +48,27 @@ connect.createServer(connect.bodyParser(), connect.router(function (app) {
     // 8.4.2 데이터 삭제
     // GET - /DELETE/:id
     app.get('/Delete/:id', function (request, response) {
-        client.query('DELETE FROM products WHERE id = ?', [request.params.id]);
-
-        response.writeHead(302, {'Location': '/'});
-        response.end();
+        client.query('DELETE FROM products WHERE id = ?', [request.params.id], function (error, result) {
+            if (error) {
+                console.log('Error: DELETE,', error);
+            } else {
+                console.log(result);
+                /*
+                 {
+                     fieldCount: 0,
+                     affectedRows: 1,
+                     insertId: 0,
+                     serverStatus: 2,
+                     warningCount: 0,
+                     message: '',
+                     protocol41: true,
+                     changedRows: 0
+                 }
+                 */
+                response.writeHead(302, {'Location': '/'});
+                response.end();
+            }
+        });
     });
 
     // 8.4.3 데이터 추가
@@ -82,7 +77,7 @@ connect.createServer(connect.bodyParser(), connect.router(function (app) {
     app.get('/Insert', function (request, response) {
         fs.readFile('Insert.html', 'utf8', function (error, data) {
             if (error) {
-                console.log('Error:');
+                console.log('Error: readFile(Insert.html)', error);
             } else {
                 response.writeHead(200, {'Content-Type': 'text/html'});
                 response.end(data);
@@ -95,10 +90,28 @@ connect.createServer(connect.bodyParser(), connect.router(function (app) {
         var body = request.body;
 
         client.query('INSERT INTO products (name, modelnumber, series) VALUES (?, ?, ?)',
-            [body.name, body.modelnumber, body.series]);
-
-        response.writeHead(302, {'Location': '/'});
-        response.end();
+            [body.name, body.modelnumber, body.series],
+            function (error, result) {
+                if (error) {
+                    console.log('Error: INSERT,', error);
+                } else {
+                    console.log(result);
+                    /*
+                     {
+                         fieldCount: 0,
+                         affectedRows: 1,
+                         insertId: 11,
+                         serverStatus: 2,
+                         warningCount: 0,
+                         message: '',
+                         protocol41: true,
+                         changedRows: 0
+                     }
+                     */
+                    response.writeHead(302, {'Location': '/'});
+                    response.end();
+                }
+            });
     });
 
     // 8.4.4 데이터 수정
@@ -106,12 +119,12 @@ connect.createServer(connect.bodyParser(), connect.router(function (app) {
     app.get('/Edit/:id', function (request, response) {
         fs.readFile('Edit.html', 'utf8', function (error, data) {
             if (error) {
-                console.log('Error:');
+                console.log('Error: readFile(Edit.html)', error);
             } else {
                 client.query('SELECT * FROM products WHERE id = ?', [request.params.id],
                     function (error, results) {
                         if (error) {
-                            console.log('Error:');
+                            console.log('Error: SELECT id =', request.params.id, ',', error);
                         } else {
                             response.writeHead(200, {'Content-Type': 'text/html'});
                             response.end(ejs.render(data, {
@@ -129,10 +142,23 @@ connect.createServer(connect.bodyParser(), connect.router(function (app) {
 
         client.query('UPDATE products SET name = ?, modelnumber = ?, series = ? WHERE id = ?',
             [body.name, body.modelnumber, body.series, request.params.id],
-            function (error) {
+            function (error, result) {
                 if (error) {
                     console.log('Error:');
                 } else {
+                    console.log(result);
+                    /*
+                     {
+                         fieldCount: 0,
+                         affectedRows: 1,
+                         insertId: 0,
+                         serverStatus: 2,
+                         warningCount: 0,
+                         message: '(Rows matched: 1  Changed: 1  Warnings: 0',
+                         protocol41: true,
+                         changedRows: 1
+                     }
+                     */
                     response.writeHead(302, {'Location': '/'});
                     response.end();
                 }

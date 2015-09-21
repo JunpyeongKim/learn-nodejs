@@ -79,4 +79,3 @@ DROP TABLE tbl_name;
 
 DROP DATABASE db_name;
     - DROP DATABASE Company;
-
