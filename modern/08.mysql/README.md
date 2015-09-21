@@ -14,8 +14,8 @@ $ mysql -u root -p  # MySQL Monitor
 
 - Mac OS X
 Install MySQL Community Server --> System Preferences --> Start MySQL Server
-$ mysql
-$ sudo mysql -u root
+$ mysql 
+$ sudo mysql or $ sudo mysql -u root
 
 ## 8.2 MySQL 기본
 CREATE DATABASE db_name;
@@ -23,6 +23,7 @@ CREATE DATABASE db_name;
 
 USE db_name;
     - USE Company;
+
 CRATE TABLE tbl_name (name type, ...);
     - CREATE TABLE products (
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
