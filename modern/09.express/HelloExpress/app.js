@@ -10,6 +10,9 @@
  *  - case sensitive routes
  *  - strict routing
  *
+ * 9.4 페이지 라우트
+ * - Router middleware
+ *
  * 9.6 response 객체
  *
  * method
@@ -79,6 +82,7 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 
+// 9.4.1 페이지 라우트 기본
 //app.get('/life', function (request, response, next) {
 //  //response.writeHead(200, {'Content-Type': 'text/html'});
 //  //response.end('<h1>Life Page</h1>');
@@ -90,6 +94,9 @@ app.get('/users', user.list);
 
 app.get('/life', routes.life);
 
+// 9.4.3 단일 페이지 렌더링
+// 9.4.4 폴더를 사용한 페이지 분류
+// 9.5 레이아웃 페이지
 app.get('/Product', function (request, response) {
   response.render('product', {
     title: 'Product Page'
@@ -106,6 +113,18 @@ app.get('/Product/Edit', function (request, response) {
   response.render('product/edit', {
     title: 'Edit Page'
   });
+});
+
+app.get('/NoLayout', function (request, response) {
+    response.render('product', {
+        layout: false
+    });
+});
+
+app.get('/OtherLayout', function (request, response) {
+    response.render('product', {
+        layout: 'mylaout.jade'
+    });
 });
 
 // 9.6.1 페이지 강제 이동
