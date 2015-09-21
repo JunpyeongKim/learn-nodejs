@@ -54,13 +54,14 @@ var path = require('path');
 
 var app = express();
 
+// 9.3.3 실행 환경 설정
 //app.settings.env = 'production';  // $ NODE_ENV=production node app
 
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-app.set('case sensitive routes', true);
+//app.set('case sensitive routes', true);   // ??
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
