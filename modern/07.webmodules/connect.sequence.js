@@ -14,6 +14,8 @@ connect.createServer(function (request, response, next) {
 
     next();
 }, function (request, response, next) {
+    console.log('second function...');
+
     response.writeHead(200, {'Content-Type': 'text/html'});
     response.end('<h1>Hello Connect Module</h1>');
 }).listen(52273, function () {
