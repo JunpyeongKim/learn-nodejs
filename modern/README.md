@@ -1,5 +1,6 @@
 # 모던 웹을 위한 Node.js 프로그래밍
 - 윤인성, 한빛 미디어
+- git@github.com:rintiantta/hanbit.modern.node.git
 
 ## Installation
 1. Mac
