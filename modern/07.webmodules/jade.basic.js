@@ -4,7 +4,7 @@
  * $ npm install jade
  *
  * compiler(str)
- * - Jade(HAML 파일 형식) --> HTML 변경하는 function을 생성
+ * - Jade(HAML 파일 형식) --> HTML 변경하는 function 을 생성
  *
  */
 
@@ -16,7 +16,7 @@ http.createServer(function (request, response) {
     fs.readFile('JadePage.jade', 'utf8', function (error, data) {
 
         if (error) {
-            console.log('Error:');
+            console.log('Error: readFile(JadePage.jade),', error);
         } else {
             var fn = jade.compile(data);
 
