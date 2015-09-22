@@ -4,6 +4,7 @@
  *  - 7.4.2 Logger middleware
  *  - 7.4.3 Error Handler middleware
  *  - 7.4.4 Static middleware
+ *
  * 7.5 Router middleware
  * 7.6 Cookie Parser middleware
  * 7.7 Body Parser middleware
@@ -69,7 +70,7 @@ var logger_token;
 //var logger_token = ':method + :date';
 //var logger_token = 'short';
 
-///*
+/*
 connect.createServer(
     //----------------------------------
     // 7.4.2 Logger middleware
@@ -82,7 +83,7 @@ connect.createServer(
     //},
 
     connect.errorHandler({
-        stack: true,    // stack > message
+        stack: true,    // stack >>> message
         message: true,
         dump: true
     }),
@@ -108,7 +109,7 @@ connect.createServer(
         //key: 'another sid',    // default: connect.sid
         //store:    // 세션 저장소를 설정
         cookie: {   // 생성할 cookie와 관련된 정보
-        maxAge: 60 * 1000
+            maxAge: 60 * 1000
         }
     }),
 
@@ -154,14 +155,19 @@ connect.createServer(
             response.end('<h1>' + output + '</h1>');
         });
 
+        // rintiantta / 12345678
         app.get('/Login', function (request, response, next) {
             if (request.cookies.auth === 'true') {
                 response.writeHead(200, {'Content-Type': 'text/html'});
                 response.end('<h1>Login Success</h1>');
             } else {
                 fs.readFile('Login.html', 'utf8', function (error, data) {
-                    response.writeHead(200, {'Content-Type': 'text/html'});
-                    response.end(data);
+                     if (error) {
+                        console.log('Error: readFile(Login.html),', error);
+                     } else {
+                         response.writeHead(200, {'Content-Type': 'text/html'});
+                         response.end(data);
+                     }
                 });
             }
         });
@@ -185,6 +191,9 @@ connect.createServer(
             output += '<h1>Session: ' + JSON.stringify(request.session) + '</h1>';
 
             request.session.now = (new Date()).toUTCString();
+
+            console.log('request.cookies: ', request.cookies);
+            console.log('request.session: ', request.session);
 
             response.writeHead(200, {'Content-Type': 'text/html'});
             response.end(output);
@@ -213,8 +222,8 @@ connect.createServer(
 //*/
 
 
-// use()
-/*
+// use(middleware)
+///*
 var server = connect.createServer();
 
 //----------------------------------
@@ -228,7 +237,7 @@ server.use(connect.logger(logger_token));
 //});
 
 server.use(connect.errorHandler({
-    stack: true,    // stack > message
+    stack: true,    // stack >>> message
     message: true,
     dump: true
 }));
@@ -300,14 +309,19 @@ server.use(connect.router(function (app) {
         response.end('<h1>' + output + '</h1>');
     });
 
+    // rintiantta / 12345678
     app.get('/Login', function (request, response, next) {
         if (request.cookies.auth === 'true') {
             response.writeHead(200, {'Content-Type': 'text/html'});
             response.end('<h1>Login Success</h1>');
         } else {
             fs.readFile('Login.html', 'utf8', function (error, data) {
-                response.writeHead(200, {'Content-Type': 'text/html'});
-                response.end(data);
+                if (error) {
+                    console.log('Error: readFile(Login.html),', error);
+                } else {
+                    response.writeHead(200, {'Content-Type': 'text/html'});
+                    response.end(data);
+                }
             });
         }
     });
@@ -331,6 +345,9 @@ server.use(connect.router(function (app) {
         output += '<h1>Session: ' + JSON.stringify(request.session) + '</h1>';
 
         request.session.now = (new Date()).toUTCString();
+
+        console.log('request.cookies: ', request.cookies);
+        console.log('request.session: ', request.session);
 
         response.writeHead(200, {'Content-Type': 'text/html'});
         response.end(output);
