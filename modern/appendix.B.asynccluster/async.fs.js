@@ -3,8 +3,10 @@
  *
  * $ npm install async
  *
- * 파일 처리 메서드 (ECMAScript 5 Array 객체 메서드와 사용 방법 동일
- * - forEach, map, filter, reject, reduce, detect, sortBy, some, every, concat
+ * Methods (ECMAScript 5 Array 객체 메서드와 사용 방법 동일)
+ * - forEach(), map(), filter(), reject(), reduce(), detect(), sortByv, some(), every(), concat()
+ *  - the first param : Array
+ *  - the last param : callback
  *
  */
 
