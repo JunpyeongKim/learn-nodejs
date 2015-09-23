@@ -1,30 +1,26 @@
 # Appendix D. MongoDB
-- Firefox Spider Monkey JavaScript Engine
+- Spider Monkey (Firefox JavaScript Engine)
 - http://www.mongodb.org
 - JavaScript를 사용하여 데이터베이스를 관리
 
 
 Windows
-Install
-
-$ mongod
-$ mongo
+1. Install
+2. $ mongod
+3. $ mongo
 
 Ubuntu
-UTF8: Unsupported
-
-$ sudo apt-get install mongodb
-
-$ mongo
+(*) UTF8: Unsupported
+1. $ sudo apt-get install mongodb
+2. $ mongo
 
 Mac OS X
 1. Install
-
-$ sudo mkdir -p /data/db
-$ sudo chown $USER /data/db
-
-$ mongod
-$ mongo
+2. $ sudo mkdir -p ~/apps/mongodb-osx-x86_64-3.0.3/data/db
+    - $ sudo mkdir -p /Users/$USER/apps/mongodb-osx-x86_64-3.0.3/data/db
+3. $ sudo chown $USER ~/apps/mongodb-osx-x86_64-3.0.3/data/db
+4. $ mongod --dbpath ~/apps/mongodb-osx-x86_64-3.0.3/data/db
+5. $ mongo
 
 ## D.2 MongoDB 
 ### D.2.1 데이터베이스기본와 컬렉션
@@ -79,6 +75,8 @@ $ mongo
 ### D.2.7 데이터 삭제
 > db.products.remove({ name: 'protractor' })
 > db.products.remove()
+
+(*) db.dropDatabase()
 
 ## D.3 mongojs 모듈
 - https://github.com/gett/mongojs
