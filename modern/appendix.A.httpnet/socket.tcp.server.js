@@ -3,8 +3,9 @@
  * - net 모듈은 소켓과 관련된 모듈
  * - http 모듈과 유사
  *
- * createServer([requestListener])
- * - function (socket) {}
+ * createServer([options][, connectionListener])
+ * - https://nodejs.org/docs/latest-v0.12.x/api/net.html#net_net_createserver_options_connectionlistener
+ * - connectionListener: function (socket) {}
  *
  * Echo Server
  *
