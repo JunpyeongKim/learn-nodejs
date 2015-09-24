@@ -8,39 +8,12 @@
  *
  */
 
-var fs = require('fs');
 var async = require('async');
 
-var files = ['TextFile1.txt', 'TextFile2.txt', 'TextFile3.txt'];
-
+//-----------------------------------------------------
+// series()
 /*
-fs.readFile(files[0], 'utf8', function (error, data1) {
-    if (error) {
-        console.error('Error: readFile()', error);
-    } else {
-        fs.readFile(files[1], function (error, data2) {
-            if (error) {
-                console.error('Error: readFile()', error);
-            } else {
-                fs.readFile(files[2], function (error, data3) {
-                    if (error) {
-                        console.error('Error: readFile()', error);
-                    } else {
-                        console.log('fs.readFile()----------------------------\n');
-                        console.log(data1);
-                        console.log(data2.toString('utf8'));
-                        console.log(data3.toString());
-                        console.log(data3);
-                    }
-                });
-            }
-        });
-    }
-});
-//*/
-
 // result --> Object
-/*
 async.series([
     function (callback) {
         console.log('First Function');
@@ -59,8 +32,9 @@ async.series([
 });
 //*/
 
-// result --> Object
+
 /*
+// result --> Object
 async.series({
     first: function (callback) {
         console.log('First Function');
@@ -79,8 +53,11 @@ async.series({
 });
 //*/
 
-// result --> Array
+
+//-----------------------------------------------------
+// parallel()
 /*
+// result --> Array
 async.parallel([
     function (callback) {
         console.log('First Function Start');
@@ -103,8 +80,9 @@ async.parallel([
 });
 //*/
 
-// result --> Object
+
 ///*
+// result --> Object
 async.parallel({
     first: function (callback) {
         console.log('First Function Start');
