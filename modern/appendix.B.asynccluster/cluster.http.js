@@ -29,11 +29,11 @@ console.log('CPU Count:', cpuCount);
 if (cluster.isMaster) {
     // Master Process
     for (var i = 0; i < cpuCount; i++) {
-        console.log('cluster.fork()');
+        console.log('[Master Process] cluster.fork()');
         cluster.fork();
 
         cluster.on('death', function (worker) {
-            console.log('worker', worker.pid, 'died');
+            console.log('Worker', worker.pid, 'died');
         });
     }
 } else {
@@ -49,6 +49,6 @@ if (cluster.isMaster) {
             console.log(exception);
         }
     }).listen(52273, function () {
-        console.log('Server Running at http://127.0.0.1:52273');
+        console.log('[Worker Process] Server Running at http://127.0.0.1:52273');
     });
 }
