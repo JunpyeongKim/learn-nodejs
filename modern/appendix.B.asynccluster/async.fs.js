@@ -28,7 +28,8 @@ fs.readFile(files[0], 'utf8', function (error, data1) {
                     if (error) {
                         console.error('Error: readFile()', error);
                     } else {
-                        console.log('fs.readFile()----------------------------\n');
+                        console.log('----------------------------');
+                        console.log('fs.readFile():');
                         console.log(data1);
                         console.log(data2.toString('utf8'));
                         console.log(data3.toString());
@@ -41,18 +42,21 @@ fs.readFile(files[0], 'utf8', function (error, data1) {
 });
 //*/
 
-///*
+/* ???
 async.forEach(files, function (item) {
-    console.log('async.forEach()----------------------------\n', item);
+    console.log('----------------------------');
+    console.log('async.forEach():\n', item);
 });
 //*/
 
 ///*
 async.map(files, fs.readFile, function (error, results) {
     if (error) {
-        console.error('Error: ', error);
+        console.error('Error: fs.readFile,', error);
     } else {
-        console.log('async.map(fs.readFile)----------------------------\n', results);
+        console.log('----------------------------');
+        console.log('async.map(fs.readFile):\n', results);
+        console.log(results.toString());
     }
 });
 //*/
@@ -60,9 +64,10 @@ async.map(files, fs.readFile, function (error, results) {
 ///*
 async.map(files, fs.stat, function (error, results) {
     if (error) {
-        console.error('Error: ', error);
+        console.error('Error: fs.stat, ', error);
     } else {
-        console.log('async.map(fs.stat)----------------------------\n', results);
+        console.log('----------------------------');
+        console.log('async.map(fs.stat):\n', results);
     }
 });
 //*/
