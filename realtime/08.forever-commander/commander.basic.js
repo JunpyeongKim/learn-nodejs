@@ -4,6 +4,8 @@
  * commander
  * - (*) 명령줄 도구를 만들수 있게 해 줌
  *
+ * How to install
+ * - $ npm install commander
  * - $ sudo npm install commander -g
  *
  * $ node commander.basic [-V | --version]
@@ -33,6 +35,11 @@ program.on('--help', function () {
     console.log('');
 });
 
+
+program.parse(process.argv);
+
+
+//-----------------------------------------------------------
 console.log('you ordered a notebook with:\n');
 
 console.log('- program.cpu:', program.cpu);
@@ -53,7 +60,7 @@ if (program.monitor) {
 console.log('- program.memory:', program.memory);
 console.log('Ram size: %s', program.memory);
 
-program.parse(process.argv);
+//program.parse(process.argv);
 
 /*
 // prompt(msg, fn)

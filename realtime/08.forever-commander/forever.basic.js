@@ -4,13 +4,18 @@
  * forever
  * - (*) 중지되더라도 재시작으로 계속 실행되도록
  *
+ * How to install
  * - $ sudo npm install forever -g
- *  - $ forever start app.js
- *  - $ forever list
- *  - $ forever stop PID
+ *
+ * How to use
+ * - $ forever start app.js
+ * - $ forever list
+ * - $ forever stop PID
  *
  * - (*) $ nohup node ./server.js &
  *      - in Linux, node application 을 background 로 실행
+ *
+ * (*) If you are using forever programmatically, you should install forever-monitor.
  *
  */
 
