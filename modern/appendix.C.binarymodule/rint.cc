@@ -9,7 +9,7 @@
 using namespace v8;
 
 Handle<Value> Method(const Arguments &args) {
-    handleScope scope;
+    HandleScope scope;
 
     int limit = args[0]->Int32Value();
     int result = 0;
