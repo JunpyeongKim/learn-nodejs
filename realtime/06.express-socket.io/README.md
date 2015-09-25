@@ -46,6 +46,8 @@ __Example__
            javascripts/
                        main.js
                        jquery.js
+    routes/
+           main.js
     views/
           main.jade
     
