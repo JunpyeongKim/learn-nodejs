@@ -6,3 +6,57 @@ body {
 a {
   color: #00B7FF;
 }
+
+#game {
+    width: 320px;
+    height: 300px
+}
+
+#bingo {
+    float: left;
+}
+
+#user {
+    float: right;
+}
+
+#list {
+    boarder: 1px solid gray;
+    width: 140px;
+    height: 50px;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+
+#logs {
+    boarder: 1px solid gray;
+    width: 140px;
+    height: 50px;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+
+.bingo-board {
+    boarder-left: 1px solid gray;
+    boarder-top: 1px solid gray;
+    boarder-spacing: 0px;
+    margin-bottom: 10px;
+}
+
+.bingo-board td {
+    width: 25px;
+    height: 25px;
+    boarder-right: 1px solid gray;
+    boarder-bottom: 1px solid gray;
+}
+
+#input_box {
+    width: 140px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+#user_input {
+    boarder: 1px solid gray;
+    width: 140px;
+}
