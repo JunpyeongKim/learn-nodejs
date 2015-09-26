@@ -55,6 +55,8 @@ __Example__
     app.js
     routes/index.js
     views/layout.jade
+    
+    "There are a few bugs in the bingo project"
 
 ## Jade
 - HTML --> Jade
