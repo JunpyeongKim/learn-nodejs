@@ -21,7 +21,7 @@ a {
 }
 
 #list {
-    boarder: 1px solid gray;
+    border: 1px solid gray;
     width: 140px;
     height: 50px;
     overflow: auto;
@@ -29,7 +29,7 @@ a {
 }
 
 #logs {
-    boarder: 1px solid gray;
+    border: 1px solid gray;
     width: 140px;
     height: 50px;
     overflow: auto;
@@ -37,17 +37,17 @@ a {
 }
 
 .bingo-board {
-    boarder-left: 1px solid gray;
-    boarder-top: 1px solid gray;
-    boarder-spacing: 0px;
+    border-left: 1px solid gray;
+    border-top: 1px solid gray;
+    border-spacing: 0px;
     margin-bottom: 10px;
 }
 
 .bingo-board td {
     width: 25px;
     height: 25px;
-    boarder-right: 1px solid gray;
-    boarder-bottom: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
 }
 
 #input_box {
@@ -57,6 +57,6 @@ a {
 }
 
 #user_input {
-    boarder: 1px solid gray;
+    border: 1px solid gray;
     width: 140px;
 }
