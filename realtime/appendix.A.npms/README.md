@@ -2,7 +2,7 @@
 
 ## 1. 웹 개발 프레임워크
 
-### Yahoo! Mojito
+### 1.1 Yahoo! Mojito
 - mojit = Module + Widget
     - 실행 유닛
     - MVC 구조
@@ -29,7 +29,7 @@ __Example__
     
     open http://localhost:8666/@myMojito/index
 
-### Meteor
+### 1.2 Meteor
 - 최고 수준의 웹 애플리케이션을 만들수 있는 오픈 소스 플랫폼
 - 특징
     - 라이브 페이지 업데이트
@@ -45,7 +45,7 @@ __Example__
     $ meteor
 
 
-### CompoundJS
+### 1.3 CompoundJS
 - Express 기반
 - Ruby on Rails 와 비슷한 방식으로 개발
 - http://compoundjs.com
@@ -63,7 +63,7 @@ __Example__
     open http://127.0.0.1:8888/posts
 
 
-### stylus
+### 1.4 stylus
 - CSS만을 위한 템플릿 엔진
 
 
@@ -95,9 +95,10 @@ __Example__
 --------------------------------------------------
 
 ## 2. CMS
-Content Management System : 블로그나 게시판 같은 시스템을 쉽게 만들고 관리할 수 있도록 도와주는 시스템
+- Content Management System
+    - 블로그나 게시판 같은 시스템을 쉽게 만들고 관리할 수 있도록 도와주는 시스템
 
-### Calipso
+### 2.1 Calipso
 - MongoDB 기반
 - https://github.com/cliftonc/calipso
 
@@ -116,7 +117,7 @@ __Example__
     - Add Additional Features
 
 
-### DOCPAD
+### 2.2 DOCPAD
 - 파일 시스템에만 의존
 
 
@@ -136,7 +137,7 @@ __Example__
 
 ## 3. 인증과 사용자 관리
 
-### everyauth
+### 3.1 everyauth
 - Express 와 잘 연동
 - https://github.com/bnoguchi/everyauth
 
@@ -144,7 +145,7 @@ __Example__
     $ npm install everyauth
 
 
-### passport
+### 3.2 passport
 - Express 와 잘 연동
 - http://passportjs.org
 
@@ -155,7 +156,7 @@ __Example__
 
 ## 4. 압축 관련
 
-### node-zip
+### 4.1 node-zip
 - https://github.com/daraosn/node-zip
 
 
@@ -174,7 +175,7 @@ __Example__
     console.log(zip.files['test.file']);
 
 
-### UglifyJS
+### 4.2 UglifyJS
 - JavaScript를 위한 Parser/Compressor/Beautifier 기능 제공
 - AST(Abstract Syntax Tree) 단위로 상세시 분석
 - https://github.com/mishoo/UglifyJS
@@ -204,7 +205,7 @@ __Example__
 ## 5. 로그/성능 분석
 - 실시간 모니터링
 
-### log.io
+### 5.1 log.io
 - 웹브라우저에서 실시간으로 로그를 모니터링
 - 원리
     - Harvester가 로그 파일을 계속 감시
@@ -235,7 +236,7 @@ __Example__
     };
 
 
-### Nodetime
+### 5.2 Nodetime
 - Performance profiler & monitor
 - http://nodetime.com
 - nodetime에서 제공하는 웹서비스를 통해서만 모니터링 가능
@@ -253,7 +254,7 @@ __Example__
 
 ## 6. 기타
 
-### node-ftp
+### 6.1 node-ftp
 - FTP Client Module
 
 
@@ -278,7 +279,7 @@ __Example__
     c.connect();
 
 
-### npkg
+### 6.2 npkg
 - 다양한 플랫폼에 설치가능한 패키지를 만드는 크로스 플랫폼 설치 유틸리티
 - https://github.com/wearefractal/npkg
 
@@ -290,7 +291,7 @@ __Example__
     $ npkg [package.json's directory] [output directory (optional)]
 
 
-### PDFKit
+### 6.3 PDFKit
 - PDF 문서 생성
 - CoffeeScript 사용
 
@@ -304,7 +305,7 @@ __EXample__
     .
     
 
-### Chai
+### 6.4 Chai
 - BDD/TDD 지원
     - expresso, Vows 와 비슷
 - Interface
