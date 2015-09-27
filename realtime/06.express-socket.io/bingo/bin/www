@@ -8,6 +8,7 @@ var app = require('../app');
 var debug = require('debug')('bingo:server');
 var http = require('http');
 var socketio = require('socket.io');
+var profiler = require('v8-profiler');
 
 /**
  * Get port from environment and store in Express.
@@ -20,7 +21,15 @@ app.set('port', port);
  * Create HTTP server.
  */
 
+profiler.startProfiling('lableProfiling');
 var server = http.createServer(app);
+profiler.stopProfiling('lableProfiling');
+
+console.log('Profiler Length:', profiler.profiles.length);
+profiler.profiles.forEach(function (profile, index) {
+    console.log(index, ':', profile);
+});
+console.log('prfile 0:', profiler.getProfile(0));
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -63,12 +72,23 @@ io.sockets.on('connection', function (socket) {
     socket.on('select', function (data) {
         socket.broadcast.emit('check_number', data);
 
+        profiler.takeSnapshot('labelSnapshot');
+
         users[turn_count].turn = false;
         turn_count++;
         if (turn_count >= user_count) {
             turn_count = 0;
         }
         users[turn_count].turn = true;
+
+        profiler.takeSnapshot('labelSnapshot');
+
+        console.log('Snapshot Length:', profiler.snapshots.length);
+        profiler.snapshots.forEach(function (snapshot, index) {
+            console.log(index, ':', snapshot);
+        });
+        //console.log('snapshot 0:', profiler.getSnapshot(0));
+
 
         io.sockets.emit('update_users', users);
     });
