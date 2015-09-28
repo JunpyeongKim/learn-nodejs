@@ -74,7 +74,7 @@ router.
 
                 memo.save(function (err) {
                     if (err) {
-                         throw err;
+                        throw err;
                     } else {
                         res.json({ status: 'SUCCESS' });
                     }
@@ -92,7 +92,7 @@ router.
             if (err) {
                 throw err;
             } else {
-                res.json(result);
+                res.json({ status: 'SUCCESS' });
             }
         });
     });
