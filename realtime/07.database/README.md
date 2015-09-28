@@ -17,4 +17,25 @@
 
 
     $ npm install mongolian --save
+
+## 7.3 MySQL
+- 여러 개의 확장 모듈 존재
+- node-mysql
+
+
+    $ npm install mysql --save
+
+    $ sudo mysql
+    
+    [MySQL]
+    CREATE DATABASE memo-mysql;
+    USE memo-mysql;
+    CREATE TABLE memo {
+        _id int(11) NOT NULL AUTO_INCREMENT,
+        author varchar(20) NOT NULL,
+        contents text NOT NULL,
+        date timestamp NOT NULL DEFAULT,
+        CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        PRIMARY KEY (_id)
+    };
     

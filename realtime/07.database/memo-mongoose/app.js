@@ -9,7 +9,8 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 //var db = require('./routes/db-mongoose');
-var db = require('./routes/db-mongolian');
+//var db = require('./routes/db-mongolian');
+var db = require('./routes/db-mysql');
 
 var app = express();
 
