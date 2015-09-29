@@ -59,16 +59,25 @@
     redis> set foo bar
     redis> get foo
     
-    [redis]
+__Example__ (redis)
+
     $ npm install redis
     $ npm install hiredis redis
         - hiredis C library
         - non-blocking
     
     $ redis-server
+    $ node redis[01 | 02]
 
 
 __Example__ (chat-redis)
 
     $ {redis}/src/redis-server
     $ node app
+
+__Example__ (mapreduce)
+
+    $ mongod --dbpath data/db
+    $ node insert_matches
+    $ node score_ranking
+
