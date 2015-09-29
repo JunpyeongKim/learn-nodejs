@@ -10,7 +10,7 @@ var connection = mysql.createConnection({
     port: 3306,
     user: 'root',
     //password: 'password',
-    database: 'memo'
+    database: 'memo_mysql'
 });
 
 router.
@@ -50,14 +50,15 @@ router.
 
         var memo = {
             author: author,
-            contents: contents,
-            date: date
+            contents: contents//,
+            //date: date
         };
 
         connection.query('INSERT INTO memo SET ?', memo, function (err, result) {
             if (err) {
                 throw err;
             } else {
+                console.log(result);
                 res.json({ status: 'SUCCESS' });
             }
         });

@@ -28,14 +28,27 @@
     $ sudo mysql
     
     [MySQL]
-    CREATE DATABASE memo-mysql;
-    USE memo-mysql;
-    CREATE TABLE memo {
-        _id int(11) NOT NULL AUTO_INCREMENT,
+    CREATE DATABASE memo_mysql;
+    USE memo_mysql;
+    CREATE TABLE memo (
+        _id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
         author varchar(20) NOT NULL,
         contents text NOT NULL,
-        date timestamp NOT NULL DEFAULT,
-        CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-        PRIMARY KEY (_id)
-    };
+        date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    );
+
+
+## 7.4 Redis
+- 메모리 기반의 저장소 --> 실시간 서비스에 적합
+    - 메모리를 캐시처럼 사용 
+- Key-Value 저장소
+- 디스크와 같은 비휘발성 매체에 정기적으로 데이터셋 스냅샷 파일을 저장
+- Publisher/Subscriber 모델 제공 --> 채팅과 같은 메시징 처리에 활용 가능 
+
+
+    $ npm install redis
+    $ npm install hiredis redis
+        - hiredis C library
+        - non-blocking
     
+    $ redis-server
