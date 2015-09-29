@@ -75,9 +75,36 @@ __Example__ (chat-redis)
     $ {redis}/src/redis-server
     $ node app
 
+## 7.5 MapReduce
+- Sharding
+    - 여러 대의 MongoDB에 수평적 분할을 하여 분산 처리를 해주는 기법
+    - 구성 컴포넌트
+        - shard server : 실제 데이터가 저장되는 MongoDB 서버
+        - config server : Shard 설정이 저장되는 MongoDB 서버
+        - mongos
+            - routing 역할
+            - 모든 client 는 mongos로 접속
+
+
 __Example__ (mapreduce)
 
     $ mongod --dbpath data/db
+    
+    [sharding 구성]
+    $ mongo
+    > use admin;
+    > db.runCommand({ addShard: "host_ip1:port" });
+    > db.runCommand({ addShard: "host_ip2:port" });
+    .
+    .
+    
+    > db.runCommand({ listShards: 1 });
+    
+    > db.runCommand({ enablesharding: "dbname" });
+    
+    > db.runCommand({ shardcollection: "dbname.collection_name" }, key: { _id: 1 });
+        - 분산 처리할 때 _id 값으로 구분하기 위해
+    
     $ node insert_matches
     $ node score_ranking
 
