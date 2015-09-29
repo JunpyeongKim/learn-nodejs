@@ -66,3 +66,9 @@
         - non-blocking
     
     $ redis-server
+
+
+__Example__ (chat-redis)
+
+    $ {redis}/src/redis-server
+    $ node app
