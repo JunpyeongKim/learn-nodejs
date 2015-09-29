@@ -46,6 +46,20 @@
 - Publisher/Subscriber 모델 제공 --> 채팅과 같은 메시징 처리에 활용 가능 
 
 
+    [Redis]
+    - http://redis.io/download#installation
+    $ wget http://download.redis.io/releases/redis-3.0.4.tar.gz
+    $ tar xzf redis-3.0.4.tar.gz
+    $ cd redis-3.0.4
+    $ make
+    
+    $ src/redis-server
+    
+    $ src/redis-cli
+    redis> set foo bar
+    redis> get foo
+    
+    [redis]
     $ npm install redis
     $ npm install hiredis redis
         - hiredis C library
