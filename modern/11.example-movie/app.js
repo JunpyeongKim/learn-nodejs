@@ -4,6 +4,11 @@
  * - Connect Project
  *  - Movie Reservation
  *
+ * $ npm install
+ * $ node app
+ *
+ * open http://127.0.0.1:52273
+ *
  */
 
 var connect = require('connect');
