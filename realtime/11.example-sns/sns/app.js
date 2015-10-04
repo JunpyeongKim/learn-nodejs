@@ -10,6 +10,17 @@ var users = require('./routes/users');
 
 var app = express();
 
+var check_auth = function (req, res, next) {
+    if (!req.loggedIn) {
+        //res.redirect('/auth/google');
+        console.log('not loggedin');
+        res.json({status: 'not loggedin'});
+        next();
+    }
+    console.log('loggedin');
+    next();
+};
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
