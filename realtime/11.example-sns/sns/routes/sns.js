@@ -16,6 +16,7 @@ var Post = new Schema({
 
 var postModel = mongoose.model('Post', Post);
 
+/*
 var check_auth = function (req, res, next) {
     if (false) {//!req.loggedIn) {
         console.log('sns: not loggedin');
@@ -31,6 +32,7 @@ var check_auth = function (req, res, next) {
 };
 
 router.use(check_auth);
+*/
 
 router.route('/load').
     get(function (req, res, next) {
@@ -181,7 +183,7 @@ router.route('/modify').
         console.log('/sns/modify');
 
         var _id = req.body._id;
-        var contents = req.body.contenst;
+        var contents = req.body.contents;
 
         postModel.findOne({ _id: _id }, function (err, post) {
             if (err) {
