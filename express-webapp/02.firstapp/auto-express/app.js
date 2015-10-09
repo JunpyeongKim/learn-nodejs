@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var responseTime = require('response-time');
+var errorhandler = require('errorhandler');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -26,8 +27,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Response Headers --> X-Response-Time
 app.use(responseTime());
 
+// 명시적으로 선언 필요
+//app.use(express.router);
+
+// router middleware 를 명시적으로 선언하지 않으면,
+// route 를 정의한 다음에 자동으로 선언된다.
 app.use('/', routes);
 app.use('/users', users);
+
+// Error --> HTML 형태로 보여준다
+// router middlerware 를 필요로 한다.
+app.use(errorhandler());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
