@@ -70,4 +70,28 @@
 
     $ npm install response-time --save
     $ npm install errorhandler --save
+    (*) $ npm search module-name
+
+    $ vi config.ini
+    $ npm install iniparser --save  # 실제로 추천하는 방법은 아니다. 
     
+## Logging requests to the App
+- token
+    - :req[header]
+    - :res[header]
+    - :http-version
+    - :response-time
+    - :remote-addr
+    - :date
+    - :method
+    - :url
+    - :referrer
+    - :user-agent
+    - :status
+    - ex) app.use(express.logger({ format: ':remote-addr :method :url' }));
+- default, short, tiny, dev
+    - ex) app.use(express.logger('dev'));
+- stream 옵션 : 파일로 출력 가능
+    - ex) app.use(express.logger({ format: 'tiny',
+                                   stream: fs.createWriteStream('app.log', { flags: 'w' })
+                                }));

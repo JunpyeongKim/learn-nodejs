@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var responseTime = require('response-time');
 var errorhandler = require('errorhandler');
+var fs = require('fs');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -18,6 +19,11 @@ app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+//app.use(logger(':remote-addr :method :url'));
+app.use(logger({
+    format: 'tiny',
+    stream: fs.createWriteStream('app.log', {flags: 'w'})
+}));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
