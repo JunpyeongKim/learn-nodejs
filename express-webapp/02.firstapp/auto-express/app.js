@@ -13,6 +13,12 @@ var users = require('./routes/users');
 
 var app = express();
 
+// Node.js 는 JSON-based Configuration File 사용을 제공한다.
+var config = require('./config.json')[app.get('env')];
+console.log(config.db_host);
+console.log(config.db_user);
+console.log(config.db_pass);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -56,6 +62,7 @@ app.use(function(req, res, next) {
 
 // development error handler
 // will print stacktrace
+// NODE_ENV
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);

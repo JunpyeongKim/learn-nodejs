@@ -95,3 +95,45 @@
     - ex) app.use(express.logger({ format: 'tiny',
                                    stream: fs.createWriteStream('app.log', { flags: 'w' })
                                 }));
+
+## Using a configuration file
+- .ini 파일 사용 <-- 실제로 추천하는 방법은 아니다
+- Node.js는 JSON-based Configuration File 사용 제공
+
+## Setting and getting application options
+- env
+- trust proxy
+- jsonp callback name
+- json replacer
+- json spaces
+- case sensitive routing
+- strict routing
+- view cache
+- view engine
+- views
+
+## Express in different environments
+- development
+- UAT (User Acceptance Testing)
+- staging
+- production, and so on
+- (*) 동작 원리
+    - process.env 객체에 포함된 NODE_ENV 환경 변수를 찾아 이를 'env' 에 할당하고 찾지 못하면 'development' 로 하당한다
+    - NODE_ENV 는 app.set()/get() 을 이용하여 설정 및 획득
+    - development : default
+- 시스템이 Express 에게 환경변수를 전달하는 것을 추천
+    - app.set('env', ...) 을 이용하는 것은 좋지 않다
+
+
+    (1)
+    $ export NODE_ENV=production
+    $ node app
+    
+    (2) 
+    $ echo export NODE_ENV=production >> ~/.bash_profile
+    
+    (3)
+    $ NODE_ENV=production node app
+    $ NODE_ENV=test node app
+    
+
