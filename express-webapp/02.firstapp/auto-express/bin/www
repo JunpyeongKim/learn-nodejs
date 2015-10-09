@@ -8,6 +8,9 @@ var app = require('../app');
 var debug = require('debug')('auto-express:server');
 var http = require('http');
 
+var iniparser = require('iniparser');
+var config = iniparser.parseSync('./config.ini');
+
 /**
  * Get port from environment and store in Express.
  */
@@ -85,6 +88,7 @@ function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
-    : 'port ' + addr.port;
+    //: 'port ' + addr.port;
+      : 'port ' + config.port;
   debug('Listening on ' + bind);
 }
