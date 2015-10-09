@@ -5,7 +5,11 @@ var app = express();
 app.set('view engine', 'jade');
 app.set('views', './views');
 
-// 404 & 500 에러처리 - router 미들웨어에 구현되어 있다
+// 공용 dir 을 정적 폴더 dir 로 설정함
+//  - 정적 폴더를 다중으로 설정 가능
+app.use(express.static('./public'));
+app.use(express.static('./files'));
+app.use(express.static('./downloads'));
 
 // homepage
 app.get('/', function (req, res) {
