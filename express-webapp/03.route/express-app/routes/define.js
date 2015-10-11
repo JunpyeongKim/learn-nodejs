@@ -1,3 +1,9 @@
+/**
+ *
+ * 라우트 정의
+ *
+ */
+
 var express = require('express');
 var router = express.Router();
 
