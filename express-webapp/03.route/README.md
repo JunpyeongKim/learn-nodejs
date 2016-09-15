@@ -1,0 +1,24 @@
+# 3. Understanding Express Routes
+- Route : URL Schema
+- Express 는 13개의 HTTP 요청 함수를 지원
+    - IETF (Internet Engineering Task Force)
+        - GET
+        - POST
+        - PUT
+        - DELETE
+        - HEAD
+        - TRACE
+        - OPTIONS
+        - CONNECT
+        - PATCH
+    - W3C(World Wide Web Consortium)
+        - M-SEARCH
+        - NOTIFY
+        - SUBSCRIBE
+        - UNSUBSCRIBE
+    - (*) LINK, UNLINK, PURGE 같이 사용법이 모호한 것은 지원하지 않는다
+- router Middleware
+    - Node API 를 사용하지 않고 Express API 를 사용하여 구현
+    - 앱 동작의 예측과 안정성을 보장하기위해 명시적으로 선언해야 한다
+        - ex) app.use(app.router);
+    
