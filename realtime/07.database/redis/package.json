@@ -1,0 +1,16 @@
+{
+  "name": "redis",
+  "version": "1.0.0",
+  "description": "## 7.1 mongoose",
+  "main": "redis01.js",
+  "dependencies": {
+    "hiredis": "^0.4.1",
+    "redis": "^2.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
